@@ -12,6 +12,8 @@ import javafx.scene.text.Text;
 
 
 public class PenduleController {
+	// Attributs
+	
 	 @FXML
 	    private Pane man;
 	    @FXML
@@ -31,6 +33,8 @@ public class PenduleController {
 	    @FXML
 	    private Text text;
 	    @FXML
+	    private Text hintWord;
+	    @FXML
 	    private Pane buttons;
 	    @FXML
 	    private Text winStatus;
@@ -48,6 +52,7 @@ public class PenduleController {
 	    }
 
 	    public void initialize() {
+	        // Initialise l'état du jeu (éléments du pendu, compteurs, etc.)
 	        base1.setVisible(false);
 	        base2.setVisible(false);
 	        base3.setVisible(false);
@@ -56,49 +61,91 @@ public class PenduleController {
 	        rope1.setVisible(false);
 	        rope2.setVisible(false);
 	        man.setVisible(false);
-	        mistakes=0;
-	        correct=0;
+
+	        // Réinitialise les compteurs d'erreurs et de lettres correctement trouvées
+	        mistakes = 0;
+	        correct = 0;
+
+	        // Sélectionne un mot aléatoire
 	        myWord = word.getRandomWord();
+
+	        // Génère un indice pour le mot sélectionné
+	        String wordHint = word.generateHint(myWord);
+
+	        // Affiche l'indice du mot
+	        hintWord.setText("🤔 " + wordHint);
+
+	        // Divise le mot en lettres et initialise la liste des lettres du mot
 	        myLetters = Arrays.asList(myWord.split(""));
-	        answer = Arrays.asList(new String[myLetters.size()*2]);
-	        for(int i=0; i<myLetters.size()*2; i++){
-	            if(i%2==0){
-	                answer.set(i, "_");
-	            }else{
-	                answer.set(i, " ");
+
+	        // Initialise la liste de la réponse, alternant des underscores et des espaces
+	        answer = Arrays.asList(new String[myLetters.size() * 2]);
+	        for (int i = 0; i < myLetters.size() * 2; i++) {
+	            if (i % 2 == 0) {
+	                answer.set(i, "_");  // Lettre non découverte (underscore)
+	            } else {
+	                answer.set(i, " ");  // Espace entre les lettres
 	            }
 	        }
+
+	        // Affiche la réponse initiale (underscore et espaces)
 	        String res = String.join("", answer);
 	        text.setText(res);
+
+	        // Réinitialise les messages de statut
 	        winStatus.setText("");
 	        realWord.setText("");
+
+	        // Active les boutons de lettres
 	        buttons.setDisable(false);
 	    }
 
-
-	    public void onClick(ActionEvent event){
-	        String letter = ((Button)event.getSource()).getText();
+	    
+	    public void onClick(ActionEvent event) {
+	        // Récupère la lettre choisie par l'utilisateur
+	        String letter = ((Button) event.getSource()).getText();
+	        
+	        // Désactive le bouton correspondant à la lettre choisie
 	        ((Button) event.getSource()).setDisable(true);
-	        if(myLetters.contains(letter)){
-	            correct++;
-	            int letterIndex = myLetters.indexOf(letter);
-	            answer.set(letterIndex*2, letter);
+
+	        // Vérifie si la lettre est présente dans le mot
+	        if (myLetters.contains(letter)) {
+	            int occurrences = 0;
+
+	            // Parcourt toutes les occurrences de la lettre dans le mot
+	            for (int index = 0; index < myLetters.size(); index++) {
+	                if (myLetters.get(index).equals(letter)) {
+	                    occurrences++;
+	                    // Met à jour la réponse avec la lettre à l'index trouvé
+	                    answer.set(index * 2, letter);
+	                }
+	            }
+
+	            // Incrémente le nombre de lettres correctement trouvées
+	            correct += occurrences;
+
+	            // Met à jour l'affichage du mot partiellement découvert
 	            String res = String.join("", answer);
 	            text.setText(res);
-	            if(correct==myWord.length()){
+
+	            // Vérifie si toutes les lettres ont été trouvées
+	            if (correct == myWord.length()) {
 	                winStatus.setText("You Win!");
 	                buttons.setDisable(true);
 	            }
-	        }else{
+	        } else {
+	            // La lettre choisie n'est pas dans le mot, incrémenter le nombre d'erreurs
 	            mistakes++;
-	            if(mistakes ==1) base1.setVisible(true);
-	            else if (mistakes ==2) base2.setVisible(true);
-	            else if (mistakes ==3) base3.setVisible(true);
-	            else if (mistakes ==4) pole.setVisible(true);
-	            else if (mistakes ==5) rod.setVisible(true);
-	            else if (mistakes ==6) rope1.setVisible(true);
-	            else if (mistakes ==7) rope2.setVisible(true);
-	            else if (mistakes ==8){
+
+	            // Affiche les éléments du pendu en fonction du nombre d'erreurs
+	            if (mistakes == 1) base1.setVisible(true);
+	            else if (mistakes == 2) base2.setVisible(true);
+	            else if (mistakes == 3) base3.setVisible(true);
+	            else if (mistakes == 4) pole.setVisible(true);
+	            else if (mistakes == 5) rod.setVisible(true);
+	            else if (mistakes == 6) rope1.setVisible(true);
+	            else if (mistakes == 7) rope2.setVisible(true);
+	            else if (mistakes == 8) {
 	                rope2.setVisible(false);
 	                man.setVisible(true);
 	                winStatus.setText("Perdu!");
@@ -107,7 +154,6 @@ public class PenduleController {
 	            }
 	        }
 	    }
-
 	    public void newGame(){
 	        for(int i=0; i<26; i++){
 	            buttons.getChildren().get(i).setDisable(false);

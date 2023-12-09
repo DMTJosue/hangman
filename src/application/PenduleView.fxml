@@ -160,17 +160,16 @@
                </font></Button>
          </children>
       </FlowPane>
-      <Text fx:id="text" fill="#40b9ff" layoutX="109.0" layoutY="257.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="338.1285705566406">
+      <Text fx:id="text" fill="#40b9ff" layoutX="59.0" layoutY="257.0" stroke="TRANSPARENT" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="410.0">
          <font>
             <Font size="50.0" />
          </font>
       </Text>
-      <Text fx:id="realWord" fill="#40b9ff" layoutX="75.0" layoutY="120.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="441.0">
+      <Text fx:id="realWord" fill="#40b9ff" layoutX="58.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="441.0">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Button focusTraversable="false" layoutX="258.0" layoutY="39.0" mnemonicParsing="false" onAction="#newGame" style="-fx-background-color: #33EEBB;" text="JOUER" />
       <Pane fx:id="base3" layoutX="312.0" layoutY="244.0" prefHeight="104.0" prefWidth="78.0">
          <children>
             <Line endX="207.32400512695312" endY="-40.33502197265625" layoutX="-9.0" layoutY="49.0" rotate="55.0" startX="197.77723693847656" startY="-108.42798614501953" style="-fx-stroke: #FFFFFF;" />
@@ -182,5 +181,11 @@
             <Line endX="19.550508499145508" endY="-91.14510345458984" layoutX="-10.0" layoutY="41.0" rotate="-40.0" startX="21.469873428344727" startY="-8.145970344543457" style="-fx-stroke: #FFFFFF;" />
          </children>
       </Pane>
+      <Button focusTraversable="false" layoutX="211.0" layoutY="14.0" mnemonicParsing="false" onAction="#newGame" prefHeight="26.0" prefWidth="169.0" style="-fx-background-color: #33EEBB;" text="JOUER" />
+      <Text fx:id="hintWord" fill="#d3d3b1" layoutX="68.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="440.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </Pane>
