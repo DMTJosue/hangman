@@ -6,8 +6,8 @@ Jeu de pendu
 > Download the code 
 
 ```bash
-$ git clone https://github.com/DMTJosue/jeupendu.git
-$ cd jeupendu
+$ git clone https://github.com/DMTJosue/jeu-pendu.git
+$ cd jeu-pendu
 ```
 
 <br />
