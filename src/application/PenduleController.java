@@ -47,6 +47,7 @@ public class PenduleController {
 	    private String myWord;
 	    private List<String> myLetters;
 	    private List<String> answer;
+	    
 
 	    public PenduleController() throws FileNotFoundException {
 	    }
@@ -99,7 +100,9 @@ public class PenduleController {
 	        // Active les boutons de lettres
 	        buttons.setDisable(false);
 	    }
-
+	    
+	    
+	    // Méthode qui gère le mot que l'utilisateur tape
 	    
 	    public void onClick(ActionEvent event) {
 	        // Récupère la lettre choisie par l'utilisateur
@@ -127,11 +130,12 @@ public class PenduleController {
 	            // Met à jour l'affichage du mot partiellement découvert
 	            String res = String.join("", answer);
 	            text.setText(res);
-
+	   
 	            // Vérifie si toutes les lettres ont été trouvées
-	            if (correct == myWord.length()) {
+	            if (correct == myLetters.size()) {
 	                winStatus.setText("You Win!");
 	                buttons.setDisable(true);
+	                newGame();
 	            }
 	        } else {
 	            // La lettre choisie n'est pas dans le mot, incrémenter le nombre d'erreurs
@@ -154,6 +158,8 @@ public class PenduleController {
 	            }
 	        }
 	    }
+	    
+	    // Méthode qui créer un nouveau jeu
 	    public void newGame(){
 	        for(int i=0; i<26; i++){
 	            buttons.getChildren().get(i).setDisable(false);

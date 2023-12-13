@@ -14,7 +14,7 @@ public class Main extends Application {
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("PenduleView.fxml"));
 			
-
+			
 	        // Obtenez la taille de l'écran
 	        double screenWidth = Screen.getPrimary().getVisualBounds().getWidth();
 	        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
