@@ -188,5 +188,15 @@
             <Font size="30.0" />
          </font>
       </Text>
+      <Text fx:id="hintWord1" fill="#d3d3b1" layoutX="78.0" layoutY="173.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="440.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="hintWord11" fill="#d3d3b1" layoutX="137.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="© Copyright HEI∼2023. Tous droits réservés." textAlignment="CENTER" wrappingWidth="440.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

@@ -7,6 +7,7 @@ import java.util.List;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -40,7 +41,7 @@ public class PenduleController {
 	    private Text winStatus;
 	    @FXML
 	    private Text realWord;
-
+	    
 	    private int mistakes;
 	    private int correct;
 	    private Lettre word = new Lettre();
@@ -48,12 +49,13 @@ public class PenduleController {
 	    private List<String> myLetters;
 	    private List<String> answer;
 	    
-
+	    
 	    public PenduleController() throws FileNotFoundException {
 	    }
 
 	    public void initialize() {
 	        // Initialise l'état du jeu (éléments du pendu, compteurs, etc.)
+	    	
 	        base1.setVisible(false);
 	        base2.setVisible(false);
 	        base3.setVisible(false);

@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 
@@ -20,15 +21,19 @@ public class Main extends Application {
 	        double screenHeight = Screen.getPrimary().getVisualBounds().getHeight();
 
 	        // Utilisez des proportions pour définir la taille de la scène
-	        double sceneWidth = screenWidth * 0.65; // 80% de la largeur de l'écran
-	        double sceneHeight = screenHeight * 0.65; // 80% de la hauteur de l'écran
+	        double sceneWidth = screenWidth * 0.70; // 70% de la largeur de l'écran
+	        double sceneHeight = screenHeight * 0.70; // 70% de la hauteur de l'écran
 
 	        // Créez la scène avec les dimensions calculées
 	        Scene scene = new Scene(root, sceneWidth, sceneHeight);
+	        
+	        //Définissez l'icône de la barre de titre
+            Image icon = new Image(getClass().getResourceAsStream("/images/logojeupendu.png"));
+            primaryStage.getIcons().add(icon);
 
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
-			primaryStage.setTitle("Hangman");
+			primaryStage.setTitle("Jeu Pendu");
 			primaryStage.setResizable(false);
 
 			primaryStage.show();
